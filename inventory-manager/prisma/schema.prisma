@@ -1,0 +1,60 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+
+  id Int @id @default(autoincrement())
+  balance Float
+  animals Animal[]
+  plants Plant[]
+  land Land[]
+
+}
+
+model Land {
+
+  id Int @id @default(autoincrement())
+  owner User @relation(fields: [ownerId], references: [id])
+  ownerId Int
+  address String
+  acreage Int
+  price Float
+
+}
+
+model Animal {
+
+  id Int @id @default(autoincrement())
+  owner User @relation(fields: [ownerId], references: [id])
+  ownerId Int
+  price Float
+  species String
+  spaceRequired Int
+  successRate Float
+  yieldPrice Float
+  health Int @default(100)
+  age Int
+
+}
+
+model Plant {
+
+  id Int @id @default(autoincrement())
+  owner User @relation(fields: [ownerId], references: [id])
+  ownerId Int
+  price Float
+  species String
+  spaceRequired Int
+  successRate Float
+  yieldPrice Float
+
+}
