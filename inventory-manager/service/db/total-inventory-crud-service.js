@@ -16,15 +16,9 @@ export default class TotalInventoryCrudService {
   }
 
   async save(entity) {
-    if (entity instanceof Animal) {
-      return this.animalCrudService.save(entity);
-    } else if (entity instanceof Plant) {
-      return this.plantCrudService.save(entity);
-    } else if (entity instanceof Land) {
-      return this.landCrudService.save(entity);
-    } else {
-      throw new Error('Invalid argument, must be of type Animal, Plant, or Land');
-    }
+    
+    // TODO for lab 3.3
+    
   }
 
   async findAllByOwnerId(ownerId) {
